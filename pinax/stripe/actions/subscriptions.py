@@ -149,7 +149,7 @@ def sync_subscription_from_stripe_data(customer, subscription):
     """
     defaults = dict(
         customer=customer,
-        application_fee_percent=subscription["application_fee_percent"],
+        application_fee_percent=subscription.get("application_fee_percent", 0),
         cancel_at_period_end=subscription["cancel_at_period_end"],
         canceled_at=utils.convert_tstamp(subscription["canceled_at"]),
         current_period_start=utils.convert_tstamp(subscription["current_period_start"]),
